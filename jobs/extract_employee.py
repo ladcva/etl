@@ -50,7 +50,7 @@ class JobExecutor(BaseExecutor):
             df_rate.alias("l"),
             how="left",
             on=(F.col("r.BusinessEntityID") == F.col("l.BusinessEntityID"))
-        ).withColumn("partition_date", F.to_date(F.col("r.ModifiedDate"), DATE_FORMAT)).drop("r.ModifiedDate")
+        ).withColumn("partition_date", F.to_date(F.col("r.ModifiedDate"), DATE_FORMAT)).drop("ModifiedDate")
         
         df_joined = df_joined.select(
             "r.*",
